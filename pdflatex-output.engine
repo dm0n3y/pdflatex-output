@@ -1,0 +1,8 @@
+#!/bin/bash
+PATH= $PATH:/usr/texbin:/usr/local/bin
+OUTPUT_DIR=".texaux"
+TEX="$1"
+PDF="${TEX%.tex}.pdf"
+mkdir -p ${OUTPUT_DIR}
+pdflatex --output-directory=${OUTPUT_DIR} --file-line-error --shell-escape --synctex=1 $TEX
+mv "${OUTPUT_DIR}/${PDF}" .
